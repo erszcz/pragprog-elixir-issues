@@ -1,6 +1,8 @@
 # Issues
 
-**TODO: Add description**
+An exercise project from
+[Programming Elixir by Dave Thomas](https://pragprog.com/book/elixir/programming-elixir).
+
 
 ## Installation
 
