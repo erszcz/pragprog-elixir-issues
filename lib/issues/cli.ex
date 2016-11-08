@@ -44,7 +44,8 @@ defmodule Issues.CLI do
     |> decode_response
     |> sort_into_ascending_order
     |> Enum.take(count)
-    |> Enum.each(&IO.puts("#{inspect &1}"))
+    |> Enum.map(&issue_to_string(&1))
+    |> Enum.each(&IO.puts(&1))
   end
 
   def decode_response({:ok, body}), do: body
@@ -56,5 +57,12 @@ defmodule Issues.CLI do
 
   def sort_into_ascending_order(issues) do
     Enum.sort(issues, fn i1, i2 -> i1["created_at"] <= i2["created_at"] end)
+  end
+
+  def issue_to_string(i) do
+    %{"number" => number,
+      "created_at" => created_at,
+      "title" => title} = i
+    "[#{number}] #{title} (created at #{created_at})"
   end
 end
