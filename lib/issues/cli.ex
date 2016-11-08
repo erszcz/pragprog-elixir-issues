@@ -6,6 +6,8 @@ defmodule Issues.CLI do
   a table of the last _n_ issues in a GitHub project.
   """
 
+  def main(argv), do: run(argv)
+
   def run(argv) do
     argv
     |> parse_args
